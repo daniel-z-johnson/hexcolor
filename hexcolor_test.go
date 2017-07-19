@@ -9,7 +9,7 @@ import (
 
 func TestHexRgb24BitToColor(t *testing.T) {
     expectedColor := color.NRGBA{127, 127, 127, 255}
-    actualColor, err := HexRgb24BitToColor("7e7f7f")
+    actualColor, err := HexRgb24BitToColor("7f7f7f")
     
     if err != nil {
         t.Error(err)
