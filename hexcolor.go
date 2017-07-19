@@ -7,14 +7,14 @@ import (
 	"image/color"
 )
 
-func HexRgbToColor24bit(hexString string) (color.Color, error) {
+func HexRgb24BitToColor(hexString string) (color.Color, error) {
 	rgb, err := hex.DecodeString(hexString)
 	if err != nil {
 		return nil, err
 	}
 
 	if len(rgb) != 3 {
-		return nil, &hexcolorError{fmt.Sprintf("Expected three bytes got %d instead", len(rgb))}
+		return nil, &hexcolorError{fmt.Sprintf("Expected 3 bytes got %d instead", len(rgb))}
 	}
 
 	return color.NRGBA{rgb[0], rgb[1], rgb[2], 255}, nil
