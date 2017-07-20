@@ -30,6 +30,23 @@ func HexRgb24BitToColor(hexString string) (color.Color, error) {
 	return color.NRGBA{rgb[0], rgb[1], rgb[2], 255}, nil
 }
 
+func HexRgb48BitToColor(hexString string) (color.Color, error) {
+    rgb8, err := hexStringToNBytes(hexString, 6)
+    if err != nil {
+        return nil, err
+    }
+
+    rgb := make([]uint16, 6)
+    for i := 0; i < 6; i++ {
+        rgb[i] = uint16(rgb8[i])
+    }
+
+    return color.NRGBA64{(rgb[0] << 8) + rgb[1], 
+        (rgb[2] << 8) + rgb[3], 
+        (rgb[4] << 8) + rgb[5], 
+        (1 << 16) - 1}, nil
+}
+
 type hexcolorError struct {
 	message string
 }

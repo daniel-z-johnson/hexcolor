@@ -19,3 +19,17 @@ func TestHexRgb24BitToColor(t *testing.T) {
         t.Error(fmt.Sprintf("'%#v' should equal '%#v'", actualColor, expectedColor))
     }
 }
+
+
+func TestHexRgb48BitToColor(t *testing.T) {
+    expectedColor := color.NRGBA64{127, 127, 127, 65535}
+    actualColor, err := HexRgb48BitToColor("007f007f007f")
+
+    if err != nil {
+        t.Error(err)
+    }
+
+    if actualColor != expectedColor {
+        t.Error(fmt.Sprintf("'%#v' should equal '%#v'", actualColor, expectedColor))
+    }
+}
