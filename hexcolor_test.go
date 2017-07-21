@@ -20,6 +20,13 @@ func TestHexRgb24BitToColor(t *testing.T) {
     }
 }
 
+func TestHexRgb24BitToColorWithExpectedError(t *testing.T) {
+    _, err := HexRgb24BitToColor("7f7f7fff")
+    
+    if err == nil {
+        t.Error("An error was expected but none occured")
+    }
+}
 
 func TestHexRgb48BitToColor(t *testing.T) {
     expectedColor := color.NRGBA64{127, 127, 127, 65535}
